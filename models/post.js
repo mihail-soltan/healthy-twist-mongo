@@ -1,18 +1,33 @@
 import mongoose from "mongoose";
 
-const AuthorSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
   _id: {
     $oid: {
       type: "ObjectId",
     },
   },
-  name: {
+  Title: {
     type: "String",
   },
-  email: {
+  published: {
+    $date: {
+      $numberLong: {
+        type: "String",
+      },
+    },
+  },
+  userStory: {
     type: "String",
   },
-  aboutme: {
+  recipe: {
+    type: "String",
+  },
+  prepTime: {
+    $numberInt: {
+      type: "Date",
+    },
+  },
+  ingredients: {
     type: "String",
   },
   published_at: {
@@ -41,11 +56,6 @@ const AuthorSchema = new mongoose.Schema({
       type: "Date",
     },
   },
-  avatar: {
-    $oid: {
-      type: "ObjectId",
-    },
-  },
   created_by: {
     $oid: {
       type: "ObjectId",
@@ -56,7 +66,24 @@ const AuthorSchema = new mongoose.Schema({
       type: "ObjectId",
     },
   },
+  author: {
+    $oid: {
+      type: "ObjectId",
+    },
+  },
+  postedBy: {
+    $oid: {
+      type: "ObjectId",
+    },
+  },
+  cuisine: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cuisine' }],
+  Picture: {
+    $oid: {
+      type: "ObjectId",
+    },
+  },
 });
-const Author = mongoose.model("authors", AuthorSchema);
 
-export default Author
+const Post = mongoose.model("post", PostSchema);
+
+export default Post
