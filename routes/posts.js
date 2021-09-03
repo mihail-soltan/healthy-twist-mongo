@@ -1,9 +1,11 @@
 import Router from 'express'
-import { getAll } from '../controllers/posts.js'
-import Cuisine from '../models/cuisine.js'
+import { getAll, getOneById } from '../controllers/posts.js'
 const postRouter = Router()
 postRouter
 .route("/")
 .get(getAll)
 
+postRouter
+.route("/:id")
+.get(getOneById)
 export default postRouter

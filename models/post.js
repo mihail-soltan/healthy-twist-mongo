@@ -66,17 +66,13 @@ const PostSchema = new mongoose.Schema({
       type: "ObjectId",
     },
   },
-  author: {
-    $oid: {
-      type: "ObjectId",
-    },
-  },
-  postedBy: {
-    $oid: {
-      type: "ObjectId",
-    },
-  },
-  cuisine: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cuisine' }],
+  // author: {
+  //   $oid: {
+  //     type: "ObjectId",
+  //   },
+  // },
+  postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'authors' },
+  cuisine: { type: mongoose.Schema.Types.ObjectId, ref: 'cuisine' },
   Picture: {
     $oid: {
       type: "ObjectId",

@@ -3,6 +3,8 @@ dotenv.config()
 import express  from "express";
 import connectToDatabase from './models/index.js';
 import postRouter from './routes/posts.js'
+import cuisineRouter from './routes/cuisines.js'
+import authorRouter from './routes/authors.js'
 import cors from 'cors'
 
 const app = express();
@@ -16,6 +18,8 @@ app.get("/", (req, res)=> {
 })
 
 app.use('/posts', postRouter)
+app.use('/cuisines', cuisineRouter)
+app.use('/authors', authorRouter)
 connectToDatabase().then((err) => {
     if(err) {
         return console.log(err)
